@@ -2,7 +2,8 @@ import { useRef } from 'react';
 
 import { type Attachment } from '@/activities/files/types/Attachment';
 import { getActivityTargetObjectFieldIdName } from '@/activities/utils/getActivityTargetObjectFieldIdName';
-import { CoreObjectNameSingular } from 'twenty-shared/types';
+import { useObjectMetadataItems } from '@/object-metadata/hooks/useObjectMetadataItems';
+import { CoreObjectNameSingular, FieldMetadataType } from 'twenty-shared/types';
 import { useFindManyRecords } from '@/object-record/hooks/useFindManyRecords';
 import { useIsPageLayoutInEditMode } from '@/page-layout/hooks/useIsPageLayoutInEditMode';
 import { pageLayoutEditingWidgetIdComponentState } from '@/page-layout/states/pageLayoutEditingWidgetIdComponentState';
@@ -13,10 +14,7 @@ import { ScrollWrapper } from '@/ui/utilities/scroll/components/ScrollWrapper';
 import { useAtomComponentStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomComponentStateValue';
 import { styled } from '@linaria/react';
 import { isDefined } from 'twenty-shared/utils';
-import {
-  PageLayoutType,
-  type StandaloneRichTextConfiguration,
-} from '~/generated-metadata/graphql';
+import { type StandaloneRichTextConfiguration } from '~/generated-metadata/graphql';
 import { themeCssVariables } from 'twenty-ui/theme-constants';
 
 const StyledContainer = styled.div<{ isPageLayoutInEditMode?: boolean }>`
@@ -44,13 +42,32 @@ export const StandaloneRichTextWidget = ({
     pageLayoutEditingWidgetIdComponentState,
   );
 
-  const { targetRecordIdentifier, layoutType } = useLayoutRenderingContext();
+  const { targetRecordIdentifier } = useLayoutRenderingContext();
+  const { objectMetadataItems } = useObjectMetadataItems();
 
-  const isDashboard = layoutType === PageLayoutType.DASHBOARD;
-  const dashboardId = isDashboard ? targetRecordIdentifier?.id : undefined;
-  const attachmentTargetFieldIdName = getActivityTargetObjectFieldIdName({
-    nameSingular: CoreObjectNameSingular.Dashboard,
-  });
+  const targetObjectMetadataItem = objectMetadataItems.find(
+    (objectMetadataItem) =>
+      objectMetadataItem.nameSingular ===
+      targetRecordIdentifier?.targetObjectNameSingular,
+  );
+
+  const hasActiveAttachmentsRelation =
+    targetObjectMetadataItem?.fields.some(
+      (field) =>
+        field.name === 'attachments' &&
+        field.isActive === true &&
+        (field.type === FieldMetadataType.RELATION ||
+          field.type === FieldMetadataType.MORPH_RELATION),
+    ) === true;
+
+  const attachmentFilter =
+    isDefined(targetRecordIdentifier) && hasActiveAttachmentsRelation
+      ? {
+          [getActivityTargetObjectFieldIdName({
+            nameSingular: targetRecordIdentifier.targetObjectNameSingular,
+          })]: { eq: targetRecordIdentifier.id },
+        }
+      : undefined;
 
   const configuration = widget.configuration as
     | StandaloneRichTextConfiguration
@@ -60,18 +77,12 @@ export const StandaloneRichTextWidget = ({
 
   const { records: attachments } = useFindManyRecords<Attachment>({
     objectNameSingular: CoreObjectNameSingular.Attachment,
-    filter: isDefined(dashboardId)
-      ? { [attachmentTargetFieldIdName]: { eq: dashboardId } }
-      : undefined,
-    skip: !isDefined(dashboardId),
+    filter: attachmentFilter,
+    skip: !isDefined(attachmentFilter),
   });
 
   const isThisWidgetBeingEdited = pageLayoutEditingWidgetId === widget.id;
   const isEditable = isPageLayoutInEditMode && isThisWidgetBeingEdited;
-
-  if (!isDefined(dashboardId)) {
-    return null;
-  }
 
   return (
     <StyledContainer
