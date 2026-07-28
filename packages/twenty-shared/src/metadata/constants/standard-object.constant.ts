@@ -48,7 +48,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.attachment,
         fields: STANDARD_OBJECT_FIELDS.attachment,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'file',
           'createdBy',
@@ -77,7 +77,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.blocklist,
         fields: STANDARD_OBJECT_FIELDS.blocklist,
-        derivedViewFieldNames: ['handle', 'workspaceMember', 'createdAt'],
+        viewFieldNames: ['handle', 'workspaceMember', 'createdAt'],
       }),
       blocklistRecordPageFields: {
         universalIdentifier: '5c679d04-7a1c-41be-9429-c9317ac7a0ea',
@@ -120,7 +120,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.calendarChannelEventAssociation,
         fields: STANDARD_OBJECT_FIELDS.calendarChannelEventAssociation,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'calendarChannelId',
           'calendarEvent',
           'eventExternalId',
@@ -177,7 +177,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.calendarEventParticipant,
         fields: STANDARD_OBJECT_FIELDS.calendarEventParticipant,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'calendarEvent',
           'handle',
           'displayName',
@@ -239,7 +239,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.calendarEvent,
         fields: STANDARD_OBJECT_FIELDS.calendarEvent,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'title',
           'startsAt',
           'endsAt',
@@ -314,7 +314,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.callRecording,
         fields: STANDARD_OBJECT_FIELDS.callRecording,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'status',
           'recordingRequestStatus',
           'title',
@@ -379,7 +379,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.company,
         fields: STANDARD_OBJECT_FIELDS.company,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'domainName',
           'createdBy',
@@ -468,7 +468,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.dashboard,
         fields: STANDARD_OBJECT_FIELDS.dashboard,
-        derivedViewFieldNames: ['title', 'createdBy', 'createdAt', 'updatedAt'],
+        viewFieldNames: ['title', 'createdBy', 'createdAt', 'updatedAt'],
       }),
     },
   },
@@ -491,7 +491,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageCampaign,
         fields: STANDARD_OBJECT_FIELDS.messageCampaign,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'subject',
           'status',
           'list',
@@ -520,7 +520,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageList,
         fields: STANDARD_OBJECT_FIELDS.messageList,
-        derivedViewFieldNames: ['name', 'members', 'campaigns', 'createdAt'],
+        viewFieldNames: ['name', 'members', 'campaigns', 'createdAt'],
       }),
     },
   },
@@ -557,7 +557,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageChannelMessageAssociation,
         fields: STANDARD_OBJECT_FIELDS.messageChannelMessageAssociation,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'messageChannelId',
           'message',
           'messageExternalId',
@@ -621,7 +621,7 @@ export const STANDARD_OBJECTS = {
             STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageChannelMessageAssociationMessageFolder,
           fields:
             STANDARD_OBJECT_FIELDS.messageChannelMessageAssociationMessageFolder,
-          derivedViewFieldNames: [
+          viewFieldNames: [
             'messageChannelMessageAssociation',
             'messageFolderId',
             'createdAt',
@@ -677,7 +677,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageParticipant,
         fields: STANDARD_OBJECT_FIELDS.messageParticipant,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'message',
           'role',
           'handle',
@@ -732,12 +732,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.messageThread,
         fields: STANDARD_OBJECT_FIELDS.messageThread,
-        derivedViewFieldNames: [
-          'subject',
-          'messages',
-          'updatedAt',
-          'createdAt',
-        ],
+        viewFieldNames: ['subject', 'messages', 'updatedAt', 'createdAt'],
       }),
     },
   },
@@ -757,7 +752,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.message,
         fields: STANDARD_OBJECT_FIELDS.message,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'subject',
           'messageThread',
           'messageParticipants',
@@ -781,7 +776,7 @@ export const STANDARD_OBJECTS = {
       allNotes: buildStandardObjectIndexView({
         objectUniversalIdentifier: STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.note,
         fields: STANDARD_OBJECT_FIELDS.note,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'title',
           'noteTargets',
           'bodyV2',
@@ -853,7 +848,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.noteTarget,
         fields: STANDARD_OBJECT_FIELDS.noteTarget,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'id',
           'note',
           'targetPerson',
@@ -885,7 +880,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.opportunity,
         fields: STANDARD_OBJECT_FIELDS.opportunity,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'amount',
           'createdBy',
@@ -1012,7 +1007,7 @@ export const STANDARD_OBJECTS = {
       allPeople: buildStandardObjectIndexView({
         objectUniversalIdentifier: STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.person,
         fields: STANDARD_OBJECT_FIELDS.person,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'emails',
           'createdBy',
@@ -1113,7 +1108,7 @@ export const STANDARD_OBJECTS = {
       allTasks: buildStandardObjectIndexView({
         objectUniversalIdentifier: STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.task,
         fields: STANDARD_OBJECT_FIELDS.task,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'title',
           'status',
           'taskTargets',
@@ -1273,7 +1268,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.taskTarget,
         fields: STANDARD_OBJECT_FIELDS.taskTarget,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'id',
           'task',
           'targetPerson',
@@ -1326,7 +1321,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.timelineActivity,
         fields: STANDARD_OBJECT_FIELDS.timelineActivity,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'happensAt',
           'workspaceMember',
@@ -1340,14 +1335,6 @@ export const STANDARD_OBJECTS = {
           'targetWorkflowRun',
           'targetDashboard',
         ],
-        preservedViewFields: {
-          properties: {
-            universalIdentifier: '20202020-bf01-4b01-8b01-ba5cc01aa019',
-          },
-          linkedRecordCachedName: {
-            universalIdentifier: '20202020-bf01-4b01-8b01-ba5cc01aa017',
-          },
-        },
       }),
     },
   },
@@ -1364,7 +1351,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.workflow,
         fields: STANDARD_OBJECT_FIELDS.workflow,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'statuses',
           'updatedAt',
@@ -1389,7 +1376,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.workflowAutomatedTrigger,
         fields: STANDARD_OBJECT_FIELDS.workflowAutomatedTrigger,
-        derivedViewFieldNames: ['type', 'workflow', 'createdAt'],
+        viewFieldNames: ['type', 'workflow', 'createdAt'],
       }),
       workflowAutomatedTriggerRecordPageFields: {
         universalIdentifier: '10aff295-f7ac-475d-8528-661eb9aa9759',
@@ -1437,18 +1424,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.workflowRun,
         fields: STANDARD_OBJECT_FIELDS.workflowRun,
-        derivedViewFieldNames: ['name', 'workflow', 'status'],
-        preservedViewFields: {
-          startedAt: {
-            universalIdentifier: '20202020-af11-4a11-8a11-a0bcf10abcb2',
-          },
-          createdBy: {
-            universalIdentifier: '20202020-af11-4a11-8a11-a0bcf10abcb3',
-          },
-          workflowVersion: {
-            universalIdentifier: '20202020-af11-4a11-8a11-a0bcf10abcb4',
-          },
-        },
+        viewFieldNames: ['name', 'workflow', 'status'],
       }),
       workflowRunRecordPageFields: {
         universalIdentifier: '20202020-a011-4a11-8a11-a0bcf10abcf1',
@@ -1517,13 +1493,7 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.workflowVersion,
         fields: STANDARD_OBJECT_FIELDS.workflowVersion,
-        derivedViewFieldNames: [
-          'name',
-          'workflow',
-          'status',
-          'updatedAt',
-          'runs',
-        ],
+        viewFieldNames: ['name', 'workflow', 'status', 'updatedAt', 'runs'],
       }),
       workflowVersionRecordPageFields: {
         universalIdentifier: '20202020-a010-4a10-8a10-a0bcf10aaef1',
@@ -1586,35 +1556,12 @@ export const STANDARD_OBJECTS = {
         objectUniversalIdentifier:
           STANDARD_OBJECT_UNIVERSAL_IDENTIFIERS.workspaceMember,
         fields: STANDARD_OBJECT_FIELDS.workspaceMember,
-        derivedViewFieldNames: [
+        viewFieldNames: [
           'name',
           'createdAt',
           'ownedOpportunities',
           'assignedTasks',
         ],
-        preservedViewFields: {
-          userEmail: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f1',
-          },
-          avatarUrl: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f2',
-          },
-          colorScheme: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f3',
-          },
-          locale: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f4',
-          },
-          timeZone: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f5',
-          },
-          dateFormat: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f6',
-          },
-          timeFormat: {
-            universalIdentifier: '20202020-ef01-4e01-8e01-a0bcaeabe1f7',
-          },
-        },
       }),
     },
   },
